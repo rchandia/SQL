@@ -1,0 +1,36 @@
+create table nail_polish (id integer primary key,
+name text,
+company text,
+color_shade text,
+price integer);
+
+insert into nail_polish values
+(1, "Funny_Bunny", "OPI", "White", "5");
+insert into nail_polish values
+(2, "His_Loss", "Kiara_Sky", "Glitter_pink", "11.40");
+insert into nail_polish values
+(3,"Salmon", "beetles", "Pink", "12.99");
+insert into nail_polish values
+(4, "I_Do", "Kiara_Sky", "Pink", ".97");
+insert into nail_polish values
+(5, "Snow_Bunny", "Kiara_Sky", "White", "100");
+insert into nail_polish values
+(6, "June_Bride", "gelish", "Pink", "5.99");
+insert into nail_polish values
+(7, "Midnight_Sky", "OPI", "Blue", "45.98");
+insert into nail_polish values
+(8, "Mauve", "gelish", "Red", "8.85");
+insert into nail_polish values
+(9, "Orange_You_Naughty", "gelish", "Orange","1");
+insert into nail_polish values
+(10, "Gray_Wings", "unknown", "Gray", "2.99");
+insert into nail_polish values
+(11, "Mellow_Yellow", "Kiara_Sky", "Yellow", "5.99");
+insert into nail_polish values
+(12, "New_Years's_Ball", "AIMEILI", "Glitter_Gold", ".99");
+insert into nail_polish values
+(13, "Diamond", "AIMEILI", "Glitter White", "6.66");
+insert into nail_polish values
+(14, "Meadows", "gelish", "Green", "0.00");
+insert into nail_polish values
+(15, "Edward_Cullen", "Twilight", "Topaz", "5");
