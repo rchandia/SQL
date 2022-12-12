@@ -48,3 +48,43 @@ from febsales
 where location like '%Los Angeles%'
 group by product
 
+9. Which locations in New York received at least 3 orders in January, and how many orders did they each receive? (Hint: use HAVING).
+
+select location, count(orderID) as "total orders"
+from jansales
+where location like '%NY%'
+group by location
+having count(orderID) > 2
+
+
+10. How many of each type of headphone were sold in February?
+
+
+select  count(orderId * quantity)as "total sold", product from febsales
+where product like '%Headphones%'
+group by product
+
+11. What was the average amount spent per account in February? 
+
+select  avg(quantity * price)
+from febsales f
+join customers c
+on f.orderID=c.order_id
+
+
+12. What was the average quantity of products purchased per account in February? (Hint: just like question 3, we want the overall average, not the average for each account individually).
+
+select avg(quantity)
+from febsales f
+join customers c
+on f.orderID=c.order_id
+
+
+
+13. Which product brought in the most revenue in January and how much revenue did it bring in total?
+
+select product, sum(quantity * price) as revenue
+from jansales
+group by product
+order by "revenue" desc
+limit 1
