@@ -41,3 +41,10 @@ join customers c
 on c.order_ID=feb.orderID
 where feb.quantity>2
 
+8. List all the products sold in Los Angeles in February and how many of each were sold
+
+select  product, sum(quantity) as total_sold
+from febsales
+where location like '%Los Angeles%'
+group by product
+
