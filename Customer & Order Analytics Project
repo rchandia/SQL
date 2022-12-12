@@ -22,6 +22,11 @@ on febsales.orderID=customers.order_ID;
 select product, price from jansales
 order by price asc
 
+OR
+
+Select product, MIN(price)
+from jansales
+
 5. What is the total revenue for each product sold in Janaury?
 
 
