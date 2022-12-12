@@ -2,11 +2,35 @@
  insert into famous_people values (1,"Emma Watson");
  insert into famous_people values (2, "Daniel Radcliffe");
  insert into famous_people values (3, "Rubert Grint");
+ insert into famous_people values (4, "Richard Harris");
+ insert into famous_people values (5, "Maggie Smith");
+ insert into famous_people values (6, "Robbie Coltrane");
+ insert into famous_people values (7, "Ian Heart");
+ Insert into famous_people values (8, "Richard Griffiths");
+ insert into famous_people values (9, "Harry Melling");
+ insert into famous_people values (10, "John Hurt");
+ insert into famous_people values (11, "James Phelps");
+ insert into famous_people values (12, "Bonnie Wright");
+ insert into famous_people values (13, "Oliver Phelps");
+ insert into famous_people values (14, "Matthew Lewis");
+ insert into famous_people values (15, "Tom Felton");
  
  create table character_name (id integer primary key, name text);
  insert into character_name values (1, "Harry Potter");
  insert into character_name values (2, "Ronald Weasley");
  insert into character_name values (3, "Hermione Granger");
+ insert into character_name values (4, "Neville Longbottom");
+ insert into character_name values (5, "Ginny Wealsey");
+ insert into character_name values (6, "Fred Weasley");
+ insert into character_name values (7, "Albus Dumbledore");
+ insert into character_name values (8, "Dracoy Malfoy");
+ insert into character_name values (9, "George Weasley");
+ insert into character_name values (10, "Professor Quirrell");
+ insert into character_name values (11, "Hagrid");
+ insert into character_name values (12, "Professor McGonagall");
+ insert into character_name values (13, "Vernon Dursley");
+ insert into character_name values (14, "Dudley Dursley");
+ insert into character_name values (15, "Mr. Ollivander");
  
  select * 
  from famous_people;
@@ -16,6 +40,19 @@
  insert into people_character_pair values (1, 1, 3);
  insert into people_character_pair values (2, 2, 1);
  insert into people_character_pair values (3, 3, 2);
+ insert into people_character_pair values (4, 4, 7);
+insert into people_character_pair values (5, 5, 12);
+insert into people_character_pair values (6, 6, 11);
+insert into people_character_pair values (7, 7, 10);
+insert into people_character_pair values (8,8, 13);
+insert into people_character_pair values (9,9, 14);
+insert into people_character_pair values (10,10, 15);
+insert into people_character_pair values (11, 11, 6);
+insert into people_character_pair values (12, 12, 5);
+insert into people_character_pair values (13, 13, 9);
+insert into people_character_pair values (14, 14, 4);
+insert into people_character_pair values (15, 15, 8);
+ 
  
  select * from people_character_pair;
  
