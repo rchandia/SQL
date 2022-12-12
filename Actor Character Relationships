@@ -1,0 +1,27 @@
+ create table famous_people (id integer primary key, name text);
+ insert into famous_people values (1,"Emma Watson");
+ insert into famous_people values (2, "Daniel Radcliffe");
+ insert into famous_people values (3, "Rubert Grint");
+ 
+ create table character_name (id integer primary key, name text);
+ insert into character_name values (1, "Harry Potter");
+ insert into character_name values (2, "Ronald Weasley");
+ insert into character_name values (3, "Hermione Granger");
+ 
+ select * 
+ from famous_people;
+ select * from character_name;
+ 
+ create table people_character_pair (Id integer primary key, person_ID integer, character_ID integer);
+ insert into people_character_pair values (1, 1, 3);
+ insert into people_character_pair values (2, 2, 1);
+ insert into people_character_pair values (3, 3, 2);
+ 
+ select * from people_character_pair;
+ 
+ 
+select a.name as "actor", b.name as "character" from people_character_pair
+join famous_people a
+on people_character_pair.person_ID=a.id
+join Character_name B
+on people_character_pair.character_ID=b.id
