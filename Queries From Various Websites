@@ -1,0 +1,41 @@
+The frist 5 questions are from the website HankerRank. 
+
+1. Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
+
+SELECT CITY,LENGTH(CITY) FROM STATION 
+ORDER BY LENGTH(CITY) ASC, CITY LIMIT 1; 
+
+SELECT CITY,LENGTH(CITY) FROM STATION 
+ORDER BY LENGTH(CITY) DESC, CITY LIMIT 1;
+
+2. Query a list of CITY names from STATION for cities that have an even ID number. Print the results in any order, but exclude duplicates from the answer
+
+select distinct city from station
+WHERE MOD(ID, 2) = 0
+order by city; 
+
+3. Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+
+SELECT count(city) - count(distinct city)
+from station;
+
+4. Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically
+
+SELECT CITY,LENGTH(CITY) 
+FROM STATION 
+ORDER BY LENGTH(CITY) ASC, 
+CITY LIMIT 1; 
+SELECT CITY,LENGTH(CITY) 
+FROM STATION 
+ORDER BY LENGTH(CITY) DESC, 
+CITY LIMIT 1;
+
+5. Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+
+select distinct city from station 
+where city like '%a' 
+or city like '%e'
+or city like '%i'
+or city like '%o'
+or city like '%u';
+
