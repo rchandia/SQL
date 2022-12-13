@@ -49,3 +49,16 @@ select artist_name,track_name, popularity
 from spotifydata
 order by popularity desc
 limit 10
+
+5.  What is the average popularity for each artist in Spotify? 
+
+select artist_name, avg(Popularity) as average_popularity from spotifydata
+group by artist_name
+
+6. What are the artist of an average popularity of 90 or more? 
+
+select artist_name, avg(Popularity) as average_popularity from spotifydata
+group by artist_name
+having avg(Popularity) >= 90
+order by avg(Popularity) desc
+
