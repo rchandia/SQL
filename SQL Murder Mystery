@@ -1,0 +1,46 @@
+Here is a list of queries I used to solve the murder mystery from the website https://mystery.knightlab.com/
+
+From the description we learned the murder happened on Jan 15, 2018 in SQL city
+
+select * from crime_scene_report
+where date = '20180115'
+and type = 'murder'
+and city = 'SQL City'
+
+From this report we learn that there were 2 witnesses. 
+First witness lives at the last house on "Northwestern Dr"
+Second witness, named Annabel, lives somewhere on "Franklin Ave"
+
+Now we need their interview statements
+
+First witness query 
+
+select * from interview
+join person
+on interview.person_id=person.id
+where address_street_name = 'Northwestern Dr'
+order by address_number desc
+limit 1
+
+We learn first witness name is Morty Schapiro and he saw a man with a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags. The man got into a car with a plate that included "H42W".
+
+second person 
+
+select * from interview
+join person
+on interview.person_id=person.id
+where person.name like 'Annabel%'
+and address_street_name = 'Franklin Ave'
+
+From this interview we learn that Annabel recognized the man from the gym when she went on Jan 9. 
+
+Lets check the gym membership database
+
+select * from get_fit_now_member gfnm
+join get_fit_now_check_in gfnci
+on gfnci.membership_id=gfnm.id
+where membership_status = 'gold'
+and check_in_date = '20180109'
+and membership_id like '48Z%'
+
+ 
