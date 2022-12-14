@@ -43,4 +43,45 @@ where membership_status = 'gold'
 and check_in_date = '20180109'
 and membership_id like '48Z%'
 
+This brings two names: 
+Joe Germuska
+Jeremy Bowers
+
+Let's check their interview statements. 
+
+select p.name, i.transcript from interview i 
+join person p 
+on p.id=i.person_id
+where p.name = 'Joe Germuska' or
+p.name = 'Jeremy Bowers'
+
+Joe Germuska doesn't pull up but Jeremy Bowers does. 
+In his interview, he admits to the murder! However, he states that he was hired by a women with certain physical characteristics who had 'lots of money'. 
+Lets find this women. 
+
+We can look in the driver license databse (joinging person and income) because they list the characteristics give by Jeremy. 
+
+
+select p.name, p.id, i.annual_income from person p
+join drivers_license dl
+on p.license_id=dl.id
+join income i
+on p.ssn=i.ssn
+where hair_color = 'red'
+and gender = 'female'
+and car_make = 'Tesla'
+
+Two women are listed. Now let's check in any of them attened the SQL Symphony Concert in December 2017 per Jeremy's statement.
+
+select p.name from person p 
+join facebook_event_checkin f
+on p.id=f.person_id
+where event_name = 'SQL Symphony Concert'
+and date like '201712%'
+and p.name like 'Miranda %'
+or p.name like 'Red %'
+group by p.name
+
+Only Miranda Priestly shows up therefore she is the one who paid Jeremy. 
+
  
