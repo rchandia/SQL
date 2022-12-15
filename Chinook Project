@@ -111,3 +111,26 @@ and i.invoicedate like '%2009%'
 group by e.firstname
 order by Total_sales desc 
 limit 1 
+
+
+
+16. How many sales did each sales Agent make in 2009?
+
+select e.firstname, e.lastname, count(invoicedate) as "Total Sales" from invoices i
+join customers c
+on c.customerid=i.customerid
+join employees e
+on e.employeeid=c.supportrepid
+where invoicedate like '%2009%'
+and e.Title = 'Sales Support Agent'
+group by e.firstname;
+
+17. How many sales did each Sales Agent make in total?
+
+select e.firstname, e.lastname, count(invoicedate) as "Total Sales" from invoices i
+join customers c
+on c.customerid=i.customerid
+join employees e
+on e.employeeid=c.supportrepid
+where e.Title = 'Sales Support Agent'
+group by e.firstname;
