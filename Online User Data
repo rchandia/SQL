@@ -1,0 +1,34 @@
+I am working from a practice database that contains information on users who shop online at a paticular store. 
+
+In the following query, I have created a table that shows the number of new users created each day, subtracting users that were deleted or users that were merged. 
+
+select created.date, 
+  users_created, 
+  COALESCE(users_deleted,0) as users_deleted, 
+  COALESCE(users_merged,0) as users_merged, 
+  (users_created - COALESCE(users_deleted,0) - COALESCE(users_merged,0)) as net_users  
+ 
+ from 
+ 
+(select count(id) as users_created, date(created_at) as date
+from dsv1069.users
+where date(deleted_at) is null
+group by date(created_at)) created
+
+left join 
+
+(select count(id) as users_deleted, date(deleted_at) as date
+from dsv1069.users
+where deleted_at IS not NULL 
+group by date(deleted_at)) deleted
+on created.date=deleted.date
+
+left join 
+
+(select count(*) as users_merged, date(merged_at) as date
+from dsv1069.users
+where ( id<> parent_user_id or parent_user_id IS not NULL)
+group by date(merged_at)) merged
+on merged.date=created.date
+
+
