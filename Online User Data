@@ -1,6 +1,6 @@
 I am working from a practice database that contains information on users who shop online at a paticular store. 
 
-In the following query, I have created a table that shows the number of new users created each day, subtracting users that were deleted or users that were merged. 
+***In the following query, I have created a table that shows the number of new users created each day, subtracting users that were deleted or users that were merged. 
 
 select created.date, 
   users_created, 
@@ -30,5 +30,51 @@ from dsv1069.users
 where ( id<> parent_user_id or parent_user_id IS not NULL)
 group by date(merged_at)) merged
 on merged.date=created.date
+
+
+***In this next query, a table of users most recently view item that they looked up on the website will be listed along with their emaill addess and user name. This 
+table could be used for the marketing team to generate emails to remind users to buy the item they most recently viewed. In the query, I did not specify a date range 
+for when the last viewed item was but I can edit the query to only list the users who recently viewed items within a week or whenever the marketing team wants. I 
+also speciifed in the query that we didn't want to include users who had deleted their accounts. 
+
+
+select 
+  first_name, 
+  last_name,  
+  recent_views.user_id,
+  email_address, 
+  category, 
+  name,
+   recent_views.item_id
+from 
+(select 
+    user_id, 
+     item_id, 
+     event_id, 
+     row_number () over (partition by user_id order by event_time desc) as view_number
+  from 
+    dsv1069.view_item_events) recent_views
+join 
+  dsv1069.users
+on 
+  dsv1069.users.id=recent_views.user_id
+join 
+  dsv1069.items
+on 
+  dsv1069.items.id=recent_views.item_id
+left outer join 
+  dsv1069.orders
+on 
+  orders.item_id=recent_views.item_id
+and 
+  orders.user_id=recent_views.user_id 
+where 
+  recent_views.view_number = '1'
+and 
+  users.deleted_at IS NOT NULL 
+AND 
+  ORDERS.item_id IS NULL
+
+
 
 
